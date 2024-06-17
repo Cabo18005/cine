@@ -1,0 +1,156 @@
+body {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   background-color: #ffb3b3;
+   margin: 0;
+   font-family: 'Arial', sans-serif;
+}
+
+.container {
+   position: relative;
+   width: 120%;
+   max-width: 600px;
+   height: 100%; /* Aumentado el tamaño del sobre */
+   max-height: 500px; /* Aumentado el tamaño del sobre */
+}
+
+.envelope {
+   position: relative;
+   width: 100%;
+   height: 140%;
+   background-color: #FFCC00;
+   border: 2px solid #FF9900;
+   border-radius: 8px;
+   cursor: pointer;
+   transition: transform 0.6s, box-shadow 0.3s;
+   transform-style: preserve-3d;
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+   overflow: hidden; /* Evita que el botón "Abrir" se vea fuera del sobre */
+}
+
+.envelope:hover {
+   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.flap, .body {
+   position: absolute;
+   width: 100%;
+   height: 50%;
+   background-color: #FFCC00;
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+   transition: transform 0.6s;
+}
+
+.flap {
+   top: 0;
+   border-bottom: 2px solid #FF9900;
+   border-top-left-radius: 8px;
+   border-top-right-radius: 8px;
+   transform-origin: top;
+}
+
+.body {
+   bottom: 0;
+   border-bottom-left-radius: 8px;
+   border-bottom-right-radius: 8px;
+}
+
+.seal {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: 60px;
+   height: 60px;
+   background-color: #FF9900;
+   border: none;
+   border-radius: 50%;
+   color: white;
+   font-size: 16px;
+   cursor: pointer;
+   transition: transform 0.6s;
+   z-index: 1; /* Asegura que esté sobre los elementos flap y body */
+}
+
+.seal:hover {
+   background-color: #FFCC00;
+}
+
+.invitation {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   background-color: white;
+   border: 2px solid #FF9900;
+   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+   opacity: 0;
+   transform: translateY(20px);
+   transition: opacity 0.6s, transform 0.6s;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   pointer-events: none; /* Evita que la invitación sea clickeable cuando está oculta */
+}
+
+.invitation.open {
+   opacity: 1;
+   transform: translateY(0);
+   pointer-events: auto; /* Permite que la invitación sea clickeable cuando está visible */
+}
+
+.invitation-content {
+   width: 90%;
+   height: 90%;
+   position: relative;
+}
+
+.invitation img {
+   max-width: 100%;
+   height: auto;
+}
+
+.details {
+   position: absolute;
+   top: 20%;
+   left: 50%;
+   transform: translateX(-50%);
+   background-color: rgba(255, 255, 255, 0.9);
+   padding: 20px;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+   animation: fadeIn 1s forwards;
+}
+
+.buttons {
+   display: flex;
+   justify-content: center;
+   gap: 10px;
+   margin-top: 10px;
+}
+
+.invitation button {
+   padding: 10px 20px;
+   background-color: #FF9900;
+   border: none;
+   color: white;
+   cursor: pointer;
+   transition: background-color 0.3s;
+}
+
+.invitation button:hover {
+   background-color: #FFCC00;
+}
+
+@keyframes fadeIn {
+   from {
+       opacity: 0;
+       transform: translateY(10px);
+   }
+   to {
+       opacity: 1;
+       transform: translateY(0);
+   }
+}
